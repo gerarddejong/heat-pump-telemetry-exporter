@@ -96,6 +96,28 @@ WorkingDirectory=/opt/heat-pump-telemetry-exporter/
 WantedBy=multi-user.target
 ```
 
+# Integration with Prometheus & Grafana
+
+Once you've got metrics comming in via the exporter you'll need to update your ```prometheus.yml``` configuration to scrape data into the time series database. Here's an example of what to add under the ```scrape_configs:``` section: 
+
+```
+- job_name: heat-pump
+  honor_timestamps: true
+  scrape_interval: 60s
+  scrape_timeout: 60s
+  metrics_path: /metrics
+  scheme: http
+  follow_redirects: true
+  enable_http2: true
+  static_configs:
+  - targets:
+    - localhost:8888
+```
+
+Remember not to set the scrape interval to often. Other implementations can scrape data every 10 seconds or less this is has crashed the Luxtronic control panel 2x in my experience and appears more stable on an interval of 60 seconds.
+
+You can import the provided ```Heat Pump-Grafana-Dashboard.json``` dashboard into Grafana version 10 or later.
+
 # Security Considerations
 
 It is recommended that you never make your heat pump direclty accessible to the internet. One method would be put a Raspberry Pi in between the heat pump and the rest of your network in order to isolate it by connecting the heat pump to the ethernet jack of the Pi and then connecting the Pi to you Wifi via the Pi's built in Wifi or an USB dongle.
