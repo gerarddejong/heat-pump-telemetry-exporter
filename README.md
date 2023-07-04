@@ -26,7 +26,7 @@ heatPumpPort = "8214"
 
 Use the ```metrics``` dictionary to add new metrics that you'd like to add or adapt your configuration to your heat pump's language if you prefer Dutch, German etc.
 
-Don't forget to install the required python dependencies. This project attempts to use as few dependencies as possible and should only require the [requests](https://pypi.org/project/requests/) and [websocket-client](https://pypi.org/project/websocket-client2/) packages to be installed [pip](https://pypi.org).
+Don't forget to install the required python dependencies. This project attempts to use as few dependencies as possible and should only require the [requests](https://pypi.org/project/requests/) and [websocket-client](https://pypi.org/project/websocket-client2/) packages to be installed via [pip](https://pypi.org).
 
 Start the exporter by running ```main.py```.
 
@@ -75,9 +75,9 @@ heat_pump_2nd_heat_generator_1_status 0
 
 ## Running the Heat-pump Exporter as a service
 
-It is recommended that you configure the exporter as a systemd service. This [tutorial](https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6) is good guide but if you've setup Prometheus or Grafana before you'
+It is recommended that you configure the exporter as a systemd service. This [tutorial](https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6) is good guide but if you've setup Prometheus or Grafana before you've done this before.
 
-Here's an example of what a ```heat-pump-exporter.service``` file added to your Pi's ```/etc/systemd/system/``` directory can look like if you installed the heat pump telemetru exporter to ```/opt```.
+Here's an example of what a ```heat-pump-exporter.service``` file added to your Pi's ```/etc/systemd/system/``` directory can look like if you installed the heat pump telemetru exporter to ```/opt/heat-pump-telemetry-exporter```.
 
 ```
 [Unit]
@@ -98,6 +98,6 @@ WantedBy=multi-user.target
 
 # Security Considerations
 
-It is recommended that you never make your heat pump direclty accessible to the internet. One method would be put a Raspberry Pi in between the heat pump and the rest of your network in order to isolate it by connecting the headpump to the ethernet jack of the Pi and then connecting the Pi to you Wifi via the Pi's built in Wifi or an USB dongle.
+It is recommended that you never make your heat pump direclty accessible to the internet. One method would be put a Raspberry Pi in between the heat pump and the rest of your network in order to isolate it by connecting the heat pump to the ethernet jack of the Pi and then connecting the Pi to you Wifi via the Pi's built in Wifi or an USB dongle.
 
 This can be further secured with a firewall such as [UFW](https://en.wikipedia.org/wiki/Uncomplicated_Firewall#:~:text=Uncomplicated%20Firewall%20(UFW)%20is%20a,to%20be%20easy%20to%20use.) and serving metrics via https.
