@@ -12,7 +12,7 @@
 serverHost = "0.0.0.0"
 serverPort = 8888
 
-heatpumpHost = "192.168.2.77"
+heatPumpHost = "192.168.2.77"
 heatPumpPort = "8214"
 
 metrics = {
