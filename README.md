@@ -96,7 +96,7 @@ WorkingDirectory=/opt/heat-pump-telemetry-exporter/
 WantedBy=multi-user.target
 ```
 
-# Integration with Prometheus & Grafana
+## Integration with Prometheus & Grafana
 
 Once you've got metrics comming in via the exporter you'll need to update your ```prometheus.yml``` configuration to scrape data into the time series database. Here's an example of what to add under the ```scrape_configs:``` section: 
 
@@ -118,7 +118,7 @@ Remember not to set the scrape interval to often. Other implementations can scra
 
 You can import the provided ```Heat Pump-Grafana-Dashboard.json``` dashboard into Grafana version 10 or later.
 
-# Adding Additional Metrics 
+## Adding Additional Metrics 
 
 If you would like to add additional metrics, add them to the ```config.py``` file's ```metrics``` dictionary and be sure to use the exact same names used in the Web UI's WebSocket implementation. The dictionary holds the title of each menu section as the key to each metric's group and the a specific metric can be chosen to be made availble for export to Prometheus. ```name``` is the name is the metric is called in the ebSocket implementation the ```variable``` key can be used to change what the metric is called when imported to Prometheus.
 
@@ -135,11 +135,11 @@ If you would like to add additional metrics, add them to the ```config.py``` fil
 
 Note that f you wish to add your own metrics and they use unknown units that such data will require some conversion and parsing to prevent errors.
 
-# Localisation & Language Support
+## Localisation & Language Support
 
 If you are running your heat pump contol panned in a differnt language, expect to need to update the ```config.py``` file with the correct translation for your language. If you do any translations please consider submitting them as an update to this project via a pull request. Something like ```config_de.py``` or ```config_nl.py``` will be appreciated.
 
-# Security Considerations
+## Security Considerations
 
 It is recommended that you never make your heat pump direclty accessible to the internet. One method would be put a Raspberry Pi in between the heat pump and the rest of your network in order to isolate it by connecting the heat pump to the ethernet jack of the Pi and then connecting the Pi to you Wifi via the Pi's built in Wifi or an USB dongle.
 
