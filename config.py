@@ -12,7 +12,7 @@
 serverHost = "0.0.0.0"
 serverPort = 8888
 
-heatpumpHost = "192.168.2.77"
+heatpumpHost = "192.168.2.77" # Replace with the IP address of your heat pump
 heatPumpPort = "8214"
 
 metrics = {
